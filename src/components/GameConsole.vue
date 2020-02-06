@@ -1,5 +1,12 @@
 <template>
-  <div class="card" style="width: 12rem;" v-if="gConsole">
+  <!-- BootStrap Card -->
+  <div
+    class="card"
+    :class="{'selected': isSelected}"
+    style="width: 12rem;"
+    v-if="gConsole"
+    @click="selectConsoleFn(gConsole)"
+  >
     <img :src="image" class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">{{gConsole.model}}</h5>
@@ -22,18 +29,24 @@ export default {
           image: String
         };
       }
-    }
+    },
+    isSelected: false,
+    selectConsoleFn: Function
   },
   data() {
     return {
       image: require("../assets/imgs/" + this.gConsole.image)
     };
-  }
+  },
+  methods: {}
 };
 </script>
 
 <style scoped>
 .card {
   margin: 1rem;
+}
+.selected {
+  border: 2px solid #42b983;
 }
 </style>
