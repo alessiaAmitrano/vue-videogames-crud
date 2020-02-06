@@ -4,42 +4,42 @@ export const consoles = [
     brand: "Nintendo",
     model: "Game Boy Color",
     year: "1990",
-    image: "./assets/gbc.jpg"
+    image: "gbc.jpg"
   },
   {
     id: 1,
     brand: "Nintendo",
     model: "Game Boy Advance",
     year: "2001",
-    image: "./assets/gba.jpg"
+    image: "gba.jpg"
   },
   {
     id: 2,
     brand: "Nintendo",
     model: "Game Boy AdvanceSP",
     year: "2003",
-    image: "./assets/gbasp.jpg"
+    image: "gbasp.jpg"
   },
   {
     id: 3,
     brand: "Sony",
     model: "PlayStation One",
     year: "1994",
-    image: "./assets/ps.png"
+    image: "ps.png"
   },
   {
     id: 4,
     brand: "Sony",
     model: "PlayStation Two",
     year: "2000",
-    image: "./assets/ps2.jpg"
+    image: "ps2.jpg"
   },
   {
     id: 5,
     brand: "Sony",
     model: "PSP",
     year: "2004",
-    image: "./assets/psp.png"
+    image: "psp.png"
   }
 ];
 
