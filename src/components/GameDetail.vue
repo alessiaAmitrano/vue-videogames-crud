@@ -2,7 +2,9 @@
   <div class="game-detail">
     <div class="description-sec">
       <keep-alive>
-        <component :is="subComponentShown" @gameDesc="gameItem.description"></component>
+        <component :is="subComponentShown">
+          <span v-if="gameItem">{{gameItem.description}}</span>
+        </component>
       </keep-alive>
       <button class="btn btn-info" @click="changeComponent">Toggle User Panel</button>
     </div>

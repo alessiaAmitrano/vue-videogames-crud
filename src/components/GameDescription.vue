@@ -1,14 +1,12 @@
 <template>
   <div>
     <span style="display:block; font-weight:bold;">Description:</span>
-    <span v-if="gameDesc">{{gameDesc}}</span>
+    <slot></slot>
   </div>
 </template>
 
 <script>
-export default {
-  props: ["gameDesc"]
-};
+export default {};
 </script>
 
 <style scoped>
