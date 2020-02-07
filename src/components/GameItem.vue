@@ -1,7 +1,13 @@
 <template>
   <!-- BootStrap Card -->
-  <div class="card" :class="{'selected': isSelected}" style="width: 12rem;" v-if="gameItem">
-    <img :src="imgSrc" class="card-img-top" alt="..." />
+  <div
+    class="card"
+    :class="{'selected': isSelected}"
+    style="width: 12rem;"
+    v-if="gameItem"
+    @click="selectGameFn(gameItem)"
+  >
+    <img :src="image" class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">{{gameItem.name}}</h5>
       <p class="card-text">{{gameItem.year}}</p>
@@ -25,13 +31,26 @@ export default {
         };
       }
     },
-    isSelected: false
+    isSelected: false,
+    selectGameFn: Function
   },
   data() {
     return {
-      imgSrc: require("../assets/imgs/" + this.gameItem.image)
+      image: require("../assets/imgs/" + this.gameItem.image)
     };
   },
-  methods: {}
+  methods: {},
+  updated() {
+    this.image = require("../assets/imgs/" + this.gameItem.image);
+  }
 };
 </script>
+
+<style scoped>
+.card {
+  margin: 1rem;
+}
+.selected {
+  border: 3px solid #a7a4e0;
+}
+</style>

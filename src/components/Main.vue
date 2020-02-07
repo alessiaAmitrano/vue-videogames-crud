@@ -12,9 +12,14 @@
       </div>
       <div class="games" v-if="selectedConsoleGames.length > 0">
         <div v-for="(game, index) in selectedConsoleGames" :key="index">
-          <app-game :gameItem="game"></app-game>
+          <app-game
+            :gameItem="game"
+            :selectGameFn="selectGame"
+            :isSelected="selectedGame && game.id === selectedGame.id"
+          ></app-game>
         </div>
       </div>
+      <app-game-detail :gameItem="selectedGame" v-if="selectedGame"></app-game-detail>
     </div>
   </div>
 </template>
@@ -22,33 +27,41 @@
 <script>
 import GameConsole from "./GameConsole.vue";
 import GameItem from "./GameItem.vue";
+import GameDetail from "./GameDetail.vue";
 import { eventBus } from "./../main";
+
 export default {
   data() {
     return {
       gameConsoles: [],
+      games: [],
       selectedConsoleGames: [],
-      selectedConsole: null
+      selectedConsole: null,
+      selectedGame: null
     };
   },
   components: {
     "app-console": GameConsole,
-    "app-game": GameItem
+    "app-game": GameItem,
+    "app-game-detail": GameDetail
   },
   methods: {
     selectConsole(selConsole) {
       this.selectedConsole = selConsole;
-      console.log(this.selectedConsole);
       this.selectedConsoleGames = this.loadGames(this.selectedConsole.id);
     },
+    selectGame(game) {
+      this.selectedGame = game;
+    },
     loadGames(consoleId) {
-      return eventBus.games.filter(game => {
+      return this.games.filter(game => {
         return game.console_id === consoleId;
       });
     }
   },
   mounted() {
     this.gameConsoles = eventBus.consoles;
+    this.games = eventBus.games;
   }
 };
 </script>

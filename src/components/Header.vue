@@ -10,9 +10,10 @@ export default {};
 
 <style scoped>
 .header-comp {
-  background-color: #42b983;
-  color: white;
+  background-color: #b2b4b2;
+  color: #514689;
   font-size: 32px;
+  font-weight: bold;
   text-align: left;
   padding: 2rem 3rem;
   margin: 0;

@@ -10,8 +10,9 @@ export default {};
 
 <style scoped>
 .footer {
-  background-color: #42b983;
-  color: white;
+  background-color: #b2b4b2;
+  color: #514689;
+  font-weight: bold;
   height: 5vw;
   position: absolute;
   width: 100%;

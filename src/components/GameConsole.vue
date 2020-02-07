@@ -47,6 +47,6 @@ export default {
   margin: 1rem;
 }
 .selected {
-  border: 2px solid #42b983;
+  border: 3px solid #a7a4e0;
 }
 </style>
