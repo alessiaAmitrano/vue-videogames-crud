@@ -1,6 +1,6 @@
 <template>
   <div class="header-comp">
-    <span>GAMES.IO</span>
+    <slot></slot>
   </div>
 </template>
 

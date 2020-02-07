@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <app-header></app-header>
+    <app-header>
+      <!-- passing the content through a slot -->
+      <span>GAMES.IO</span>
+    </app-header>
     <app-main></app-main>
     <app-footer></app-footer>
   </div>

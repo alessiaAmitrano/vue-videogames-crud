@@ -1,8 +1,10 @@
 <template>
   <div class="game-detail">
     <div class="description-sec">
-      <span style="display:block; font-weight:bold;">Description:</span>
-      <span>{{gameItem.description}}</span>
+      <keep-alive>
+        <component :is="subComponentShown" @gameDesc="gameItem.description"></component>
+      </keep-alive>
+      <button class="btn btn-info" @click="changeComponent">Toggle User Panel</button>
     </div>
     <div class="image-sec">
       <img :src="image" alt />
@@ -12,7 +14,14 @@
 </template>
 
 <script>
+import GameDescription from "./GameDescription.vue";
+import UserInputs from "./UserInputs.vue";
+
 export default {
+  components: {
+    "app-user-input": UserInputs,
+    "app-game-desc": GameDescription
+  },
   props: {
     gameItem: {
       type: Object,
@@ -30,10 +39,18 @@ export default {
   },
   data() {
     return {
-      image: require("../assets/imgs/" + this.gameItem.image)
+      image: require("../assets/imgs/" + this.gameItem.image),
+      subComponentShown: "app-game-desc"
     };
   },
-  methods: {},
+  methods: {
+    changeComponent() {
+      this.subComponentShown =
+        this.subComponentShown === "app-game-desc"
+          ? "app-user-input"
+          : "app-game-desc";
+    }
+  },
   updated() {
     this.image = require("../assets/imgs/" + this.gameItem.image);
   }
