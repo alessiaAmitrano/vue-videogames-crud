@@ -26,6 +26,8 @@ export default {
           console_id: Number,
           name: String,
           year: String,
+          likes: Number,
+          comments: Array,
           image: String,
           description: String
         };

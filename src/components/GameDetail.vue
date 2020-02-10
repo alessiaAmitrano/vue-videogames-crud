@@ -1,16 +1,27 @@
 <template>
   <div class="game-detail">
     <div class="description-sec">
-      <keep-alive>
-        <component :is="subComponentShown">
-          <span v-if="gameItem">{{gameItem.description}}</span>
+      <!-- <keep-alive>
+        <component :is="subComponentShown" @newComment="gameItem.comments.push($event)">
         </component>
-      </keep-alive>
-      <button class="btn btn-info" @click="changeComponent">Toggle User Panel</button>
+      </keep-alive>-->
+      <app-game-desc v-if="!showUserInput">
+        <span v-if="gameItem">{{gameItem.description}}</span>
+      </app-game-desc>
+      <app-user-input
+        v-if="showUserInput"
+        :likes="gameItem.likes"
+        :comments="gameItem.comments"
+        @newComment="gameItem.comments.push($event)"
+        @increaseLikes="gameItem.likes++"
+      ></app-user-input>
+      <hr />
+      <button class="btn btn-info" @click="toggleUserInput">Rate it!</button>
     </div>
     <div class="image-sec">
       <img :src="image" alt />
       <span class="title">{{gameItem.name}}</span>
+      <span class="title">{{gameItem.year}}</span>
     </div>
   </div>
 </template>
@@ -33,6 +44,8 @@ export default {
           console_id: Number,
           name: String,
           year: String,
+          likes: Number,
+          comments: Array,
           image: String,
           description: String
         };
@@ -42,15 +55,12 @@ export default {
   data() {
     return {
       image: require("../assets/imgs/" + this.gameItem.image),
-      subComponentShown: "app-game-desc"
+      showUserInput: false
     };
   },
   methods: {
-    changeComponent() {
-      this.subComponentShown =
-        this.subComponentShown === "app-game-desc"
-          ? "app-user-input"
-          : "app-game-desc";
+    toggleUserInput() {
+      this.showUserInput = !this.showUserInput;
     }
   },
   updated() {
@@ -82,5 +92,12 @@ img {
 .title {
   font-size: 30px;
   font-weight: bold;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+button {
+  float: right;
 }
 </style>
