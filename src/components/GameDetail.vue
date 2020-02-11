@@ -20,7 +20,7 @@
     </div>
     <div class="image-sec">
       <img :src="image" alt />
-      <span class="title">{{gameItem.name}}</span>
+      <span v-local-pippo="'green'" class="title">{{gameItem.name}}</span>
       <span class="title">{{gameItem.year}}</span>
     </div>
   </div>
@@ -34,6 +34,14 @@ export default {
   components: {
     "app-user-input": UserInputs,
     "app-game-desc": GameDescription
+  },
+  directives: {
+    "local-pippo": {
+      bind(el, binding, vnode) {
+        console.log("binding", binding);
+        el.style.color = binding.value;
+      }
+    }
   },
   props: {
     gameItem: {

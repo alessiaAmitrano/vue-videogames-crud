@@ -9,6 +9,19 @@ export const eventBus = new Vue({
   }
 });
 
+Vue.directive("warning", {
+  bind(el, binding, vnode) {
+    console.log("binding", binding);
+    let delay = 0;
+    if (binding.modifiers["delayed"]) {
+      delay = 3000;
+    }
+    setTimeout(() => {
+      if (binding.arg === "color") el.style.color = "red";
+    }, delay);
+  }
+});
+
 new Vue({
   el: "#app",
   render: h => h(App)

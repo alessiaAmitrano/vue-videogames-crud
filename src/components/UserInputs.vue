@@ -3,7 +3,7 @@
     <div class="form-group">
       <span>
         <strong>Likes:</strong>
-        {{likes}}
+        <p v-warning:color.delayed="likes" style="display: inline;">{{likes}}</p>
       </span>
       <button class="btn btn-info" @click="increaseLikes">Like!</button>
       <br />
@@ -48,7 +48,7 @@ export default {
 
 <style scoped>
 .form-group {
-  height: 400px;
+  height: 200px;
   margin-bottom: 2rem;
 }
 

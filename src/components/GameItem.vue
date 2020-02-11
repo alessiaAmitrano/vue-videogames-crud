@@ -44,6 +44,9 @@ export default {
   methods: {},
   updated() {
     this.image = require("../assets/imgs/" + this.gameItem.image);
+  },
+  beforeDestroy() {
+    console.log("destroying...");
   }
 };
 </script>
